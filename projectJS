@@ -1,0 +1,40 @@
+function generateMealPlan() {
+    // Get user inputs
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var goal = document.getElementById("goal").value;
+    var mondayMeal = document.getElementById("monday").value;
+    // Repeat for each day of the week
+    
+    // Validate email
+    if (!isValidEmail(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    // Generate meal plan HTML
+    var mealPlanHTML = `
+        <h2>Meal Plan for ${name}</h2>
+        <p>Email: ${email}</p>
+        <p>Goal for the Week: ${goal}</p>
+        <h3>Monday:</h3>
+        <p>${mondayMeal}</p>
+        <!-- Repeat for each day of the week -->
+    `;
+
+    // Display meal plan
+    document.getElementById("mealPlanOutput").innerHTML = mealPlanHTML;
+}
+
+function clearForm() {
+    // Clear all input fields
+    document.getElementById("mealPlanForm").reset();
+    // Clear meal plan output
+    document.getElementById("mealPlanOutput").innerHTML = "";
+}
+
+function isValidEmail(email) {
+    // Regular expression for email validation
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
